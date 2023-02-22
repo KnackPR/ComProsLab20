@@ -70,7 +70,6 @@ int main(){
 	}
 	
 	int state = 1;
-	int i = 0;
 	while(getline(course_file,textline)){
 		if(state == 1){
 			course c;
@@ -84,15 +83,14 @@ int main(){
 			if(textline == "> Students"){
 				state = 3;
 			}else{
-			allcourses[i].lecture_list.push_back(textline);
+			allcourses[allcourses.size()-1].lecture_list.push_back(textline);
 			}			
 		}else{
 			if(textline == "---------------------------------------"){
 				state = 1;
-				i++;
 			}else{
 				student *p = findstudent(allstudents,atof(textline.c_str()));
-				 allcourses[i].student_list.push_back(p);
+				 allcourses[allcourses.size()-1].student_list.push_back(p);
 			}
 		}
 	}
